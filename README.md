@@ -22,7 +22,7 @@ A chain of pubs is looking to improve its system of quizzes to adapt themselves 
 * The turns of the players are randomly decided
 * Turns are timed. Every consequent player will have less time.
 
-#API, Libraries, Resources
+# API, Libraries, Resources
 
 - https://www.highcharts.com/ HighCharts is an open-source library for rendering responsive charts.
 - https://opentdb.com/ OpenTriviaDB is an open-source library of trivia questions.
