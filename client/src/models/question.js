@@ -1,3 +1,4 @@
+const shuffle = require('shuffle-array');
 
 const Question = function (questionData) {
   this.questionText = questionData['question'];
@@ -8,5 +9,9 @@ const Question = function (questionData) {
   this.allAnswers.push(this.correctAnswer);
 };
 
+//npm install shuffle-array
+Question.prototype.shuffleAnswers = function() {
+  this.allAnswers = shuffle(this.allAnswers);
+};
 
 module.exports = Question;

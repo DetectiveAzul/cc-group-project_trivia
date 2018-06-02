@@ -47,4 +47,14 @@ describe('Question', function () {
     assert.strictEqual(actual, expected);
   });
 
+  it('should be able to shuffle', function () {
+    question1.shuffleAnswers();
+    const actual = question1.allAnswers;
+    const expected = ["She found it scary.",
+    "She was badly injured from it.",
+    "It is part Bug.", "She crawled into it&#039;s mouth as a baby."]
+    assert.notDeepStrictEqual(actual, expected);
+
+  });
+
 });
