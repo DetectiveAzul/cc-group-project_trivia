@@ -18,7 +18,7 @@ QuestionDataHandler.prototype.getData = function () {
 
 QuestionDataHandler.prototype.handleData = function (questions) {
   const questionsArray = [];
-
+  
   questions.forEach((question) => {
     const newQuestion = new Question(question);
     questionsArray.push(newQuestion);

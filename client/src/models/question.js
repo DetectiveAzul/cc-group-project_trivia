@@ -9,6 +9,10 @@ const Question = function (questionData) {
   this.allAnswers.push(this.correctAnswer);
 };
 
+Question.prototype.isCorrectAnswer = function (answer) {
+  return (this.allAnswers[answer] === this.correctAnswer);
+};
+
 //npm install shuffle-array
 Question.prototype.shuffleAnswers = function() {
   this.allAnswers = shuffle(this.allAnswers);

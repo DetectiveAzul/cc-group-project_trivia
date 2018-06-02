@@ -1,4 +1,4 @@
-require('../question.js');
+const Question = require('../question.js');
 
 const rawQuestions = [{
 "category": "Entertainment: Video Games",
