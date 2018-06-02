@@ -1,4 +1,4 @@
-use high_scores
+use trivia
 db.dropDatabase();
 
 db.high_scores.insertMany([
