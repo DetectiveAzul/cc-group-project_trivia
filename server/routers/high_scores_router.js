@@ -35,7 +35,7 @@ const highScoresRouter = function(highScoresCollection) {
 
   router.delete('/all', (req, res) => {
     highScoresCollection
-      .deleteMany({ })
+      .deleteMany({})
       .then( () => {
         highScoresCollection
           .find()
