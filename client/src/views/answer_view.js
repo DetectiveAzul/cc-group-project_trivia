@@ -9,10 +9,11 @@ const AnswerView = function(index, answerText, element) {
 AnswerView.prototype.render = function () {
   const answerElement = document.createElement('p');
   answerElement.textContent = this.answerText;
-  this.element.addEventListener('click', (event) => {
-    this.handleClick(event.target);
-  });
   this.element.appendChild(answerElement);
+  this.element.addEventListener('click', (event) => {
+    this.handleClick();
+  });
+
 };
 
 AnswerView.prototype.handleClick = function () {
