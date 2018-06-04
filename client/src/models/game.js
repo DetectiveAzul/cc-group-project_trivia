@@ -4,12 +4,33 @@ const PubSub = require('../helpers/pub_sub');
 const Request = require('../helpers/request');
 const shuffle = require('shuffle-array');
 
-const Game = function(players, questions){
+const Game = function(players=[], questions=[]){
   this.players = players;
   this.questions = questions;
   this.currentQuestion = 0;
   this.currentPlayer = 0;
 }
+
+Game.prototype.bindEvents = function () {
+  PubSub.subscribe('FormView:player-number', (evt) => {
+    this.createPlayers(evt.detail);
+    console.log(this.players);
+  });
+  PubSub.subscribe('QuestionData:Questions-ready', (evt) => {
+    this.questions = evt.detail;
+    console.log(this.questions);
+});
+};
+
+
+Game.prototype.createPlayers = function (numberOfPlayers) {
+  for (var i = 0; i < numberOfPlayers; i++) {
+    const newPlayer = new Player(`Player ${i+1}`);
+    this.players.push(newPlayer);
+  };
+};
+
+
 
 // For the current player we check if the argument passed to this method is
 // the correct one, using the Question object's method isCorrectAnswer. Depending
@@ -28,6 +49,7 @@ Game.prototype.playerAnswer = function (answer) {
 Game.prototype.shufflePlayers = function () {
   this.players = shuffle(this.players);
 };
+
 
 
 // We add 1 to currentPlayer (in reference to the players index), making sure
