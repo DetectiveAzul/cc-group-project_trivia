@@ -3,7 +3,7 @@ const PubSub = require('../helpers/pub_sub.js');
 const FormView = function() {
   this.container = null;
   this.categories = [];
-  this.difficulty = ['easy', 'medium', 'hard'];
+  this.difficulty = ['Any', 'Easy', 'Medium', 'Hard'];
 }
 
 FormView.prototype.createView = function () {
@@ -82,6 +82,7 @@ FormView.prototype.createDifficultyMenu = function () {
 FormView.prototype.populateDifficultyMenu = function (parent) {
   for (var i = 0; i < this.difficulty.length; i++) {
     const option = document.createElement('option');
+    if (this.difficulty[i] === 'Any') option.defaultSelected;
     option.textContent = `${this.difficulty[i]}`;
     option.value = this.difficulty[i].toLowerCase();
     parent.appendChild(option);
@@ -117,9 +118,10 @@ FormView.prototype.handleSubmit = function (form) {
    const amount = form.numberQuestions.value;
    let category = '';
    if(form.category.value != 0) category = `&category=${form.category.value}`
-   const difficulty = form.difficulty.value;
+   let difficulty = '';
+   if(form.difficulty.value !== 'any') difficulty = `&category=${form.difficulty.value}`;
 
-   let url = `https://opentdb.com/api.php?amount=${amount}${category}&difficulty=${difficulty}&type=multiple`;
+   let url = `https://opentdb.com/api.php?amount=${amount}${category}${difficulty}&type=multiple`;
    console.log(url);
 
 };
