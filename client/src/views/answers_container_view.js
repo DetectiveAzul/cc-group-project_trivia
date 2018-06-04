@@ -14,7 +14,7 @@ AnswersContainerView.prototype.render = function () {
     answerContainer.classList.add('answer');
     const answerView = new AnswerView(i, this.answers[i], answerContainer);
     this.container.appendChild(answerContainer);
-    answerViews.render();
+    answerView.render();
     this.answerViews.push(answerView);
   }
 };

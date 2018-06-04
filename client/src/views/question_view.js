@@ -1,7 +1,6 @@
 const PubSub = require('../helpers/pub_sub.js');
 
 const QuestionView = function(questionText, container) {
-  this.index = index;
   this.questionText = questionText;
   this.container = container;
 }

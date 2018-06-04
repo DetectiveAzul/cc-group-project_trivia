@@ -8,17 +8,22 @@ const QuestionMainContainerView = function(question, container){
   this.container = container;
 }
 
-AnswersContainerView.prototype.render = function () {
+QuestionMainContainerView.prototype.render = function () {
   questionElement = document.createElement('div');
   questionElement.classList.add('question');
 
   answersElement = document.createElement('div');
   answersElement.classList.add('list-of-answer');
 
+  this.container.appendChild(questionElement);
+  this.container.appendChild(answersElement);
+
   const questionView = new QuestionView(this.question.questionText, questionElement);
-  const answersContainerView = new AnswerContainerView(this.answers, answersElement);
+  const answersContainerView = new AnswersContainerView(this.answers, answersElement);
 
   questionView.render();
   answersContainerView.render();
 
 };
+
+module.exports = QuestionMainContainerView;
