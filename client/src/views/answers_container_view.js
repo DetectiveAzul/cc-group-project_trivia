@@ -18,3 +18,5 @@ AnswersContainerView.prototype.render = function () {
     this.answerViews.push(answerView);
   }
 };
+
+module.exports = AnswersContainerView;

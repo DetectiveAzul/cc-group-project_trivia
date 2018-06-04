@@ -20,3 +20,5 @@ AnswerView.prototype.handleClick = function () {
    PubSub.publish('AnswerView:answer-selected', this.answerText);
    console.log(this.answerText);
 };
+
+module.exports = AnswerView;
