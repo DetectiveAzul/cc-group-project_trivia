@@ -12,7 +12,7 @@ CategoryDataHandler.prototype.getData = function () {
   request.get()
     .then((categories) => {
       this.categoryArray = categories;
-      console.log(this.categoryArray);
+      PubSub.publish('CategoryDataHandler:categories-ready', this.categoryArray);
     });
 };
 
