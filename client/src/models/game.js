@@ -11,6 +11,10 @@ const Game = function(players, questions){
   this.currentPlayer = 0;
 }
 
+// For the current player we check if the argument passed to this method is
+// the correct one, using the Question object's method isCorrectAnswer. Depending
+// on this we pass the currentQuestion to one of the currentPlayer's methods to
+// be stored.
 Game.prototype.playerAnswer = function (answer) {
   if(this.questions[this.currentQuestion].isCorrectAnswer(answer)){
     this.players[this.currentPlayer].correctAnswer(this.questions[this.currentQuestion]);
@@ -33,15 +37,25 @@ Game.prototype.nextPlayer = function () {
     this.currentPlayer++;
   }else{
     this.currentPlayer = 0;
-  }
+    this.nextRound();
+  };
 };
 
+// Advances currentQuestion index by one, or resets it after the last uqestion
 Game.prototype.nextQuestion = function () {
-  if(this.currentQuestion < this.length-1){
+  if(this.currentQuestion < this.questions.length-1){
     this.currentQuestion++;
   }else{
-    this.currentQuestion = 0;
-  }
+    this.endGame();
+  };
+};
+
+Game.prototype.nextRound = function () {
+  this.nextQuestion();
+};
+
+Game.prototype.endGame = function () {
+  return 1;
 };
 
 module.exports = Game;

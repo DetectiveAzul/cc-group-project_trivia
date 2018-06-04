@@ -42,4 +42,13 @@ describe('Game', function(){
     assert.strictEqual(actual, expected);
   });
 
+  it('change question after last player\'s turn', function(){
+    game1.nextPlayer();
+    game1.nextPlayer();
+    game1.nextPlayer();
+    const actual = game1.currentQuestion;
+    const expected = 1;
+    assert.strictEqual(actual, expected);
+  });
+
 });
