@@ -2,6 +2,10 @@ body {
   background: url(/images/background.jpg);
 }
 
+p, h1 {
+  font-family: 'Quicksand', cursive;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -34,12 +38,14 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-self: center;
+  min-width: 400px;
 }
 
 form * {
-  min-width: 35%;
-  margin: 10px;
-  max-width: 40%;
+  margin: 5px;
+  min-width: 300px;
+  width: 60%;
 }
 
 .header {
@@ -65,15 +71,33 @@ form * {
 
 .player {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 5px;
   padding: 5px;
   flex: 1;
-  max-height: 24%;
+  max-height: 30%;
+  max-width: 300px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
-  background-color: rgb(255,250,250, 0.5);
 }
+
+.p-1 {
+  background-color: rgb(112,221,232, 0.3);
+}
+
+.p-2 {
+    background-color: rgb(168,132,232, 0.3);
+}
+
+.p-3 {
+    background-color: rgb(229,43,99, 0.3);
+}
+
+.p-4 {
+    background-color: rgb(234,141,59, 0.3);
+}
+
 .question-container {
   margin: 5px;
   flex: 3;
@@ -90,6 +114,7 @@ form * {
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
   background-color: rgb(255,250,250, 0.5);
   flex: 1;
+  max-height: 40%;
 }
 
 .list-of-answer {
@@ -121,4 +146,38 @@ form * {
 
 .footer {
   flex: 1.5;
+}
+
+form {
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+  background-color: rgb(255,250,250, 0.5);
+  max-width: 90%;
+}
+
+
+select {
+  font-size: 30px;
+
+}
+
+#numberQuestions {
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+}
+
+#start {
+  font-size: 30px;
+  height: 100px;
+  width: 200px;
+  margin-top: 15px;
+}
+
+#title {
+  font-size: 60px;
+}
+
+label {
+  font-size: 20px;
+  text-align: center;
 }

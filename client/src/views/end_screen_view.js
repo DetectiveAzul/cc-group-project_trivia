@@ -9,6 +9,7 @@ const EndScreenView = function (players, body) {
 EndScreenView.prototype.render = function (){
   this.createHeader();
   const statsViewContainer = document.createElement('div');
+  statsViewContainer.classList.add('line')
   this.container.appendChild(statsViewContainer);
   const statsView = new StatsView(this.players, statsViewContainer);
   statsView.render();
@@ -17,7 +18,8 @@ EndScreenView.prototype.render = function (){
 
 EndScreenView.prototype.createHeader = function () {
   const header = document.createElement('h1');
-  header.textContent = 'insertText';
+  header.id = 'title';
+  header.textContent = `INSERT is the Winner!`;
   this.container.appendChild(header);
   console.log('Hello World from createHeader');
 };

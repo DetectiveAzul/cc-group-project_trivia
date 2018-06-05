@@ -8,6 +8,7 @@ const FormView = function() {
 
 FormView.prototype.createView = function () {
   this.createContainer();
+  this.createTitle();
   this.createPlayerMenu();
   this.createDifficultyMenu();
   this.createCategoryMenu();
@@ -30,7 +31,15 @@ FormView.prototype.createContainer = function () {
   this.container = formElement;
 };
 
+FormView.prototype.createTitle = function () {
+  const heading = document.createElement('h1');
+  heading.id = 'title';
+  heading.textContent = 'Pub Quiz';
+  this.container.appendChild(heading);
+};
+
 FormView.prototype.createPlayerMenu = function () {
+  this.createLabel('Choose Numbers of Players');
   const dropDownElement = document.createElement('select');
   dropDownElement.id = 'playerNumber';
   this.container.appendChild(dropDownElement);
@@ -47,6 +56,7 @@ FormView.prototype.populatePlayerMenu = function (parent) {
 };
 
 FormView.prototype.createCategoryMenu = function () {
+  this.createLabel('Choose Category');
   const dropDownElement = document.createElement('select');
   dropDownElement.id = 'category';
   this.container.appendChild(dropDownElement);
@@ -72,6 +82,7 @@ FormView.prototype.createDefaultCategory = function (parent) {
 };
 
 FormView.prototype.createDifficultyMenu = function () {
+  this.createLabel('Choose Difficulty');
   const dropDownElement = document.createElement('select');
   dropDownElement.id = 'difficulty';
   this.container.appendChild(dropDownElement);
@@ -89,6 +100,7 @@ FormView.prototype.populateDifficultyMenu = function (parent) {
 };
 
 FormView.prototype.createQuestionNumber = function () {
+  this.createLabel('Choose Number of Questions');
   const numberField = document.createElement('input');
   numberField.id = 'numberQuestions';
   numberField.type = 'number';
@@ -125,5 +137,10 @@ FormView.prototype.handleSubmit = function (form) {
    PubSub.publish('FormView:player-number', form.playerNumber.value);
 };
 
+FormView.prototype.createLabel = function (textContent) {
+  const label = document.createElement('label');
+  label.textContent = textContent;
+  this.container.appendChild(label);
+};
 
 module.exports = FormView;

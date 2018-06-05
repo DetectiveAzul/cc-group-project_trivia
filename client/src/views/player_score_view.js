@@ -11,7 +11,7 @@ PlayerScoreView.prototype.render = function () {
 };
 
 PlayerScoreView.prototype.addName = function () {
-  const newName = document.createElement('h4');
+  const newName = document.createElement('h2');
   newName.textContent = this.player.name;
   this.container.appendChild(newName);
 };
@@ -19,7 +19,7 @@ PlayerScoreView.prototype.addName = function () {
 PlayerScoreView.prototype.percentageScore = function () {
   const percentageScore = document.createElement('p');
   const percentage = this.calculatePercentage();
-  percentageScore.textContent = percentage;
+  percentageScore.textContent = `Has answered ${percentage}% correctly`;
   this.container.appendChild(percentageScore);
 };
 
