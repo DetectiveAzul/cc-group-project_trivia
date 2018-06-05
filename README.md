@@ -1,5 +1,25 @@
+# Compendium
+
+PubQuiz is a JavaScript Trivia Game made with Express and MongoDB. Following Event Driven Development and MVC, and a RESTfull Server for storing highscores (in development), takes question from an external API (OpenTDB) and creates a game depending on number of player, difficulty, category and number of questions. Some of the categories does not have questions, so it will create an empty game.
+
+## Install
+* Install npm: `$ brew install npm`
+* `$ git clone ...`
+
+* If prompted, install node
+* Run npm packager `$ npm install`
+* Create development database:
+`$ mongod`
+* Add the seed file on a new terminal tab
+`$ mongo < server/db/seeds.js`
+* Run bundler on a new tab: `$ npm run build`
+* Run server on a new tab: `$ npm run server:dev`
+
+## Run
+* Open Google Chrome and go to `http://localhost:3000`
+
 # Pub Quiz
-A chain of pubs is looking to improve its system of quizzes to adapt themselves to modern times. They have decided to create an interactive webApp to display questions, answers and stats of the team in real time. Your task is to make an MVP so they can play the quiz with diferent number of players and being able to configure number of questions, categories and difficulty. They want questions to be random and numerous, so you might use an API to bring in content to the app. 
+A chain of pubs is looking to improve its system of quizzes to adapt themselves to modern times. They have decided to create an interactive webApp to display questions, answers and stats of the team in real time. Your task is to make an MVP so they can play the quiz with diferent number of players and being able to configure number of questions, categories and difficulty. They want questions to be random and numerous, so you might use an API to bring in content to the app.
 
 # MVP
 
@@ -7,7 +27,7 @@ A chain of pubs is looking to improve its system of quizzes to adapt themselves 
 	* Number of players
 	* Category of the questions
 	* Difficulty of the questions
-	* Number of questions 
+	* Number of questions
 * There are players
 * There are questions
 * Questions have multiple answers
