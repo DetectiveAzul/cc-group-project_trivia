@@ -19,7 +19,6 @@ FormView.prototype.createView = function () {
 FormView.prototype.bindEvents = function () {
   PubSub.subscribe('CategoryDataHandler:categories-ready', (evt) => {
     this.categories = evt.detail["trivia_categories"];
-    console.log(this.categories);
     this.createView();
   });
 };
