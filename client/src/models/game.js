@@ -4,6 +4,7 @@ const PubSub = require('../helpers/pub_sub');
 const Request = require('../helpers/request');
 const shuffle = require('shuffle-array');
 const EndScreenView = require('../views/end_screen_view.js');
+const Timer = require('./timer.js');
 
 const Game = function(players=[], questions=[]){
   this.players = players;
@@ -16,18 +17,12 @@ const Game = function(players=[], questions=[]){
 Game.prototype.bindEvents = function () {
   PubSub.subscribe('FormView:player-number', (evt) => {
     this.createPlayers(evt.detail);
-    console.log(this.players);
   });
   PubSub.subscribe('QuestionData:Questions-ready', (evt) => {
     this.questions = evt.detail;
-    console.log(this.questions);
     this.renderGame();
   });
   PubSub.subscribe('AnswerView:answer-selected', (evt) => {
-    // if (this.isLastPlayer()) {
-    //   PubSub.publish('GameModel:end-of-round', this.questions[this.currentQuestion].correctAnswer);
-    // };
-
     console.log(`${this.players[this.currentPlayer].name} selects:`, evt.detail);
     this.handleAnswerClick(evt.detail);
   });
@@ -50,7 +45,6 @@ Game.prototype.renderGame = function() {
 Game.prototype.handleAnswerClick = function (answerIndex) {
   this.playerAnswer(answerIndex);
   this.nextPlayer();
-  // this.renderGame();
 };
 
 
@@ -121,17 +115,15 @@ Game.prototype.nextQuestion = function () {
 
 Game.prototype.isLastPlayer = function() {
   return (this.currentPlayer === (this.players.length - 1))
-}
+};
 
 Game.prototype.getCorrectAnswer = function() {
   return this.questions[this.currentQuestion].correctAnswer;
-}
+};
 
 Game.prototype.displayCorrectAnswer = function() {
-  // alert(`Correct answer was: ${this.getCorrectAnswer()}`);
   PubSub.publish('GameModel:end-of-round', this.getCorrectAnswer());
-
-}
+};
 
 Game.prototype.endGame = function () {
   const body = document.querySelector('body');

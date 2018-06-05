@@ -7,7 +7,6 @@ const GameView = function(){
   this.players = null;
   this.question = null;
   this.container = null;
-  this.timer = null;
 }
 
 GameView.prototype.bindEvents = function () {
@@ -22,13 +21,16 @@ GameView.prototype.render = function () {
   this.createOwnElement();
   this.renderPlayers();
   this.renderQuestion();
-  this.renderTimer();
 };
 
 GameView.prototype.createOwnElement = function() {
   //Find and delete the body
   const body = document.querySelector('body');
   body.innerHTML = '';
+
+  //Add the header div
+  //TODO:
+  // this.renderTimer(body);
 
   //Create own div and append it
   this.container = document.createElement('div');
@@ -37,20 +39,21 @@ GameView.prototype.createOwnElement = function() {
 
 };
 
+//TODO:
+// GameView.prototype.renderTimer = function (parent) {
+//   const newContainer = document.createElement('div');
+//   newContainer.classList.add('header');
+//   parent.appendChild(newContainer);
+//   const timerView = new TimerView(newContainer);
+//   timerView.bindEvents();
+// };
+
 GameView.prototype.renderQuestion = function () {
   const questionContainer = document.createElement('div');
   questionContainer.classList.add('question-container');
   this.container.appendChild(questionContainer);
   const questionMainContainerView = new QuestionMainContainerView(this.question, questionContainer);
   questionMainContainerView.render();
-};
-
-GameView.prototype.renderTimer = function () {
-  const timerContainer = document.createElement('div');
-  timerContainer.classList.add('timer-container');
-  this.container.appendChild(timerContainer);
-  const timerContainerView = new TimerView(timerContainer, 10000);
-    timerContainerView.render();
 };
 
 GameView.prototype.renderPlayers = function() {

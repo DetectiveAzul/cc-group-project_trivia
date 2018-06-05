@@ -3,29 +3,19 @@ const PubSub = require('../helpers/pub_sub.js');
 
 const TimerView = function(container){
   this.container = container;
-  this.currentSecond = null;
+  this.currentTime = 0;
 }
 
-TimerView.prototype.bindEvents= function () {
-  PubSub.subscribe('Timer:current-second', (evt) => {
-    this.currentSecond = evt.detail;
-    this.render();
-  })
+TimerView.prototype.bindEvents = function () {
+  PubSub.subscribe('TimerMode:time-starts', (evt) => {
+    this.renderTimer();
+  });
 };
 
-TimerView.prototype.render = function () {
-  this.container.innerHTML = '';
-  const timeBox = document.createElement('div');
-  const newSecond = this.createSecond();
-  timeBox.appendChild(newSecond);
-  this.container.appendChild(timeBox);
+TimerView.prototype.renderTimer = function () {
+
 };
 
-TimerView.prototype.createSecond = function () {
-  const second = document.createElement('p');
-  second.classList.add('timer');
-  second.textContent = this.currentSecond;
-  return second;
-};
+
 
 module.exports = TimerView;

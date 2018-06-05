@@ -22,15 +22,4 @@ document.addEventListener('DOMContentLoaded', () => {
   const game = new Game();
   game.bindEvents();
 
-  // const testTimerView = document.createElement('div');
-  // testTimerView.classList.add('header');
-  // const body = document.querySelector('body');
-  // body.appendChild(testTimerView);
-  //
-  // const timerView = new TimerView(testTimerView);
-  // timerView.bindEvents();
-  //
-  // const timer = new Timer(10000);
-  // timer.tick();
-
 });
