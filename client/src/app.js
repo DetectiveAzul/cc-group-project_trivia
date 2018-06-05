@@ -3,6 +3,8 @@ const CategoryDataHandler = require('./models/form_models/category_data_handler.
 const Game = require('./models/game.js')
 const GameView = require('./views/game_view.js');
 const FormView = require('./views/form_view.js');
+const TimerView = require('./views/timer_view.js');
+const Timer = require('./models/timer.js');
 
 document.addEventListener('DOMContentLoaded', () => {
   const questionDataHandler = new QuestionDataHandler();
@@ -20,8 +22,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const game = new Game();
   game.bindEvents();
 
-  // const timerView = new TimerView()
-  const timer = new Timer(10000);
-  timer.bindEvents();
+  // const testTimerView = document.createElement('div');
+  // testTimerView.classList.add('header');
+  // const body = document.querySelector('body');
+  // body.appendChild(testTimerView);
+  //
+  // const timerView = new TimerView(testTimerView);
+  // timerView.bindEvents();
+  //
+  // const timer = new Timer(10000);
+  // timer.tick();
 
 });
