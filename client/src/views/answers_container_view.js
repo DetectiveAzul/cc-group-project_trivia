@@ -1,8 +1,9 @@
 const PubSub = require('../helpers/pub_sub.js');
 const AnswerView = require('./answer_view.js');
 
-const AnswersContainerView = function(answers, container){
+const AnswersContainerView = function(answers, correctAnswer, container){
   this.answers = answers;
+  this.correctAnswer = correctAnswer;
   this.answerViews = [];
   this.container = container;
 }

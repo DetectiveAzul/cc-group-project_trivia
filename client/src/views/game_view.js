@@ -10,7 +10,6 @@ const GameView = function(){
 
 GameView.prototype.bindEvents = function () {
   PubSub.subscribe('Game-ready', (evt) => {
-    console.log('Game Started')
     this.players = evt.detail.players;
     this.question = evt.detail.question;
     this.render();
