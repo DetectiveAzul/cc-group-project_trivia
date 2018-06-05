@@ -22,6 +22,10 @@ Game.prototype.bindEvents = function () {
     this.renderGame();
   });
   PubSub.subscribe('AnswerView:answer-selected', (evt) => {
+    if (this.isLastPlayer()) {
+      PubSub.publish('GameModel:end-of-round', this.questions[this.currentQuestion].correctAnswer);
+    };
+
     console.log(`Player ${this.currentPlayer + 1} selects:`, evt.detail);
     this.handleAnswerClick(evt.detail);
   });
@@ -105,7 +109,9 @@ Game.prototype.nextQuestion = function () {
   };
 };
 
-
+Game.prototype.isLastPlayer = function() {
+  return (this.currentPlayer === (this.players.length - 1))
+}
 
 Game.prototype.endGame = function () {
   console.log('Game Ended!');

@@ -16,7 +16,16 @@ AnswerView.prototype.render = function () {
 
 };
 
+AnswerView.prototype.displayCorrectAnswer = function () {
+  PubSub.subscribe('GameModel:end-of-round', (evt) => {
+    if (evt.detail === this.answerText) {
+      this.container.classList.add('correct-answer');
+    }
+  });
+};
+
 AnswerView.prototype.handleClick = function () {
+  this.displayCorrectAnswer();
    PubSub.publish('AnswerView:answer-selected', this.index);
 };
 
