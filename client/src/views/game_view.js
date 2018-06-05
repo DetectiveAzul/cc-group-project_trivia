@@ -7,12 +7,14 @@ const GameView = function(){
   this.players = null;
   this.question = null;
   this.container = null;
+  this.currentPlayer = null;
 }
 
 GameView.prototype.bindEvents = function () {
   PubSub.subscribe('Game-ready', (evt) => {
     this.players = evt.detail.players;
     this.question = evt.detail.question;
+    this.currentPlayer = evt.detail.currentPlayer;
     this.render();
   });
 };
@@ -57,13 +59,11 @@ GameView.prototype.renderQuestion = function () {
 };
 
 GameView.prototype.renderPlayers = function() {
-  //This will divide players on two divs for styling purposes
   const playerContainer = document.createElement('div');
   playerContainer.classList.add('player-container');
   this.container.appendChild(playerContainer);
-  const playersContainerView = new PlayersContainerView(this.players, playerContainer);
+  const playersContainerView = new PlayersContainerView(this.players, playerContainer, this.currentPlayer);
   playersContainerView.render();
-  //TODO: Refactor this to divide players on two divs
 };
 
 module.exports = GameView;

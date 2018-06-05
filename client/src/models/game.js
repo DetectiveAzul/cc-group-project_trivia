@@ -33,7 +33,8 @@ Game.prototype.renderGame = function() {
   if (!this.gameEnded) {
     const game = {
       players: this.players,
-      question: this.questions[this.currentQuestion]
+      question: this.questions[this.currentQuestion],
+      currentPlayer: this.currentPlayer
     };
     PubSub.publish('Game-ready', game );
   };
