@@ -19,12 +19,16 @@ Game.prototype.bindEvents = function () {
   PubSub.subscribe('QuestionData:Questions-ready', (evt) => {
     this.questions = evt.detail;
     console.log(this.questions);
-    this.startGame();
+    this.renderGame();
+  });
+  PubSub.subscribe('AnswerView:answer-selected', (evt) => {
+    console.log(`Player ${this.currentPlayer + 1} selects:`, evt.detail);
+    this.handleAnswerClick(evt.detail);
   });
 
 };
 
-Game.prototype.startGame = function() {
+Game.prototype.renderGame = function() {
   const game = {
     players: this.players,
     question: this.questions[this.currentQuestion]
@@ -33,6 +37,18 @@ Game.prototype.startGame = function() {
   PubSub.publish('Game-ready', game );
 };
 
+
+// Conections with the views
+
+Game.prototype.handleAnswerClick = function (answerIndex) {
+  this.playerAnswer(answerIndex);
+  this.nextPlayer();
+  this.renderGame();
+};
+
+
+
+// Game model logic
 
 Game.prototype.createPlayers = function (numberOfPlayers) {
   for (var i = 0; i < numberOfPlayers; i++) {
@@ -74,6 +90,11 @@ Game.prototype.nextPlayer = function () {
   };
 };
 
+// Next Round Logic
+Game.prototype.nextRound = function () {
+  this.nextQuestion();
+};
+
 // Advances currentQuestion index by one, or resets it after the last uqestion
 Game.prototype.nextQuestion = function () {
   if(this.currentQuestion < this.questions.length-1){
@@ -83,9 +104,7 @@ Game.prototype.nextQuestion = function () {
   };
 };
 
-Game.prototype.nextRound = function () {
-  this.nextQuestion();
-};
+
 
 Game.prototype.endGame = function () {
   return 1;

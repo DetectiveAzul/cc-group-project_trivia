@@ -17,7 +17,7 @@ AnswerView.prototype.render = function () {
 };
 
 AnswerView.prototype.handleClick = function () {
-   PubSub.publish('AnswerView:answer-selected', this.answerText);
+   PubSub.publish('AnswerView:answer-selected', this.index);
    console.log(this.answerText);
 };
 
