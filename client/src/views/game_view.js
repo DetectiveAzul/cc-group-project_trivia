@@ -1,11 +1,13 @@
 const PubSub = require('../helpers/pub_sub.js');
 const PlayersContainerView = require('./player_container_view.js');
 const QuestionMainContainerView = require('./question_main_container_view.js');
+const TimerView = require('./timer_view.js');
 
 const GameView = function(){
   this.players = null;
   this.question = null;
   this.container = null;
+  this.timer = null;
 }
 
 GameView.prototype.bindEvents = function () {
@@ -20,6 +22,7 @@ GameView.prototype.render = function () {
   this.createOwnElement();
   this.renderPlayers();
   this.renderQuestion();
+  this.renderTimer();
 };
 
 GameView.prototype.createOwnElement = function() {
@@ -40,6 +43,14 @@ GameView.prototype.renderQuestion = function () {
   this.container.appendChild(questionContainer);
   const questionMainContainerView = new QuestionMainContainerView(this.question, questionContainer);
   questionMainContainerView.render();
+};
+
+GameView.prototype.renderTimer = function () {
+  const timerContainer = document.createElement('div');
+  timerContainer.classList.add('timer-container');
+  this.container.appendChild(timerContainer);
+  const timerContainerView = new TimerView(timerContainer, 10000);
+    timerContainerView.render();
 };
 
 GameView.prototype.renderPlayers = function() {
