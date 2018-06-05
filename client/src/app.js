@@ -20,10 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const game = new Game();
   game.bindEvents();
 
-
-
-
-
-
+  // const timerView = new TimerView()
+  const timer = new Timer(10000);
+  timer.bindEvents();
 
 });
