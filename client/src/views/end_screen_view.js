@@ -1,4 +1,5 @@
 const StatsView = require('./stats_view.js');
+const FormView = require("./form_view.js");
 
 const EndScreenView = function (players, body) {
   this.players = players;
@@ -13,6 +14,8 @@ EndScreenView.prototype.render = function (){
   this.container.appendChild(statsViewContainer);
   const statsView = new StatsView(this.players, statsViewContainer);
   statsView.render();
+  const button = this.createHomeButton();
+  this.container.appendChild(button);
 };
 
 
@@ -34,9 +37,15 @@ EndScreenView.prototype.sortByAnswers = function () {
   return this.players.sort(function(a, b) { return b.correctQuestionsAnswered.length - a.correctQuestionsAnswered.length });
 };
 
-
-
-//iterate thru player array
+EndScreenView.prototype.createHomeButton = function () {
+  const button = document.createElement('input');
+  button.type = 'button';
+  button.value = 'Play Again!'
+  button.addEventListener('click', function() {
+    window.location.reload();
+  });
+  return button;
+};
 
 
 
