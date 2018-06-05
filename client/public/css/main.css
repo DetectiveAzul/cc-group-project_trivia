@@ -47,6 +47,7 @@ form * {
   border: thin purple solid;
   margin: 5px;
   flex: 1;
+  max-height: 25%
 }
 .question-container {
   border: thin green solid;
