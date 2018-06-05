@@ -99,6 +99,7 @@ Game.prototype.nextPlayer = function () {
 
 // Next Round Logic
 Game.prototype.nextRound = function () {
+  this.displayCorrectAnswer();
   this.nextQuestion();
 };
 
@@ -114,6 +115,15 @@ Game.prototype.nextQuestion = function () {
 
 Game.prototype.isLastPlayer = function() {
   return (this.currentPlayer === (this.players.length - 1))
+}
+
+Game.prototype.getCorrectAnswer = function() {
+  return this.questions[this.currentQuestion].correctAnswer;
+}
+
+Game.prototype.displayCorrectAnswer = function() {
+  alert(`Correct answer was: ${this.getCorrectAnswer()}`);
+
 }
 
 Game.prototype.endGame = function () {
