@@ -107,7 +107,7 @@ Game.prototype.nextQuestion = function () {
 
 
 Game.prototype.endGame = function () {
-  return 1;
+  console.log('Game Ended!');
 };
 
 module.exports = Game;
