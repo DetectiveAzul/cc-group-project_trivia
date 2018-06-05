@@ -1,6 +1,7 @@
 
-const Player = function(name){
+const Player = function(name, className){
   this.name = name;
+  this.className = className;
   this.score = 0;
   this.questionsAnswered = [];
   this.correctQuestionsAnswered = [];

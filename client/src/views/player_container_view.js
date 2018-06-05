@@ -12,7 +12,7 @@ PlayersContainerView.prototype.render = function () {
   for (var i = 0; i < this.players.length; i++) {
     const playerContainer = document.createElement('div');
     playerContainer.classList.add('player');
-    playerContainer.classList.add(`p-${i+1}`);
+    playerContainer.classList.add(`${this.players[i].className}`);
     const playerView = new PlayerView(this.players[i], playerContainer);
     this.container.appendChild(playerContainer);
     playerView.render();

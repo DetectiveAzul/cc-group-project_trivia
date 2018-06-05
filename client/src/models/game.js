@@ -53,7 +53,7 @@ Game.prototype.handleAnswerClick = function (answerIndex) {
 
 Game.prototype.createPlayers = function (numberOfPlayers) {
   for (var i = 0; i < numberOfPlayers; i++) {
-    const newPlayer = new Player(`Player ${i+1}`);
+    const newPlayer = new Player(`Player ${i+1}`, `p-${i+1}`);
     this.players.push(newPlayer);
   };
 };
