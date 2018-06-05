@@ -25,7 +25,7 @@ AnswerView.prototype.displayCorrectAnswer = function () {
 };
 
 AnswerView.prototype.handleClick = function () {
-  // this.displayCorrectAnswer();
+  
    PubSub.publish('AnswerView:answer-selected', this.index);
 };
 

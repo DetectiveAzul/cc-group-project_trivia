@@ -13,6 +13,7 @@ AnswersContainerView.prototype.render = function () {
   for (var i = 0; i < this.answers.length; i++) {
     const answerContainer = document.createElement('div');
     answerContainer.classList.add('answer');
+    if (this.answers[i] === this.correctAnswer) answerContainer.classList.add('correct-answer')
     const answerView = new AnswerView(i, this.answers[i], answerContainer);
     this.container.appendChild(answerContainer);
     answerView.render();

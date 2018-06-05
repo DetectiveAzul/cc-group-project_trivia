@@ -50,7 +50,7 @@ Game.prototype.renderGame = function() {
 Game.prototype.handleAnswerClick = function (answerIndex) {
   this.playerAnswer(answerIndex);
   this.nextPlayer();
-  this.renderGame();
+  // this.renderGame();
 };
 
 
@@ -91,6 +91,7 @@ Game.prototype.shufflePlayers = function () {
 Game.prototype.nextPlayer = function () {
   if(this.currentPlayer < this.players.length-1){
     this.currentPlayer++;
+    this.renderGame();
   }else{
     this.currentPlayer = 0;
     this.nextRound();
@@ -100,7 +101,11 @@ Game.prototype.nextPlayer = function () {
 // Next Round Logic
 Game.prototype.nextRound = function () {
   this.displayCorrectAnswer();
-  this.nextQuestion();
+  document.querySelector('.correct-answer').style.background = 'green';
+  setTimeout(() => {
+    this.nextQuestion();
+    this.renderGame();
+  }, 1000);
 };
 
 // Advances currentQuestion index by one, or resets it after the last uqestion
@@ -122,7 +127,8 @@ Game.prototype.getCorrectAnswer = function() {
 }
 
 Game.prototype.displayCorrectAnswer = function() {
-  alert(`Correct answer was: ${this.getCorrectAnswer()}`);
+  // alert(`Correct answer was: ${this.getCorrectAnswer()}`);
+  PubSub.publish('GameModel:end-of-round', this.getCorrectAnswer());
 
 }
 
