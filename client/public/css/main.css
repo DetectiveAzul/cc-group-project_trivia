@@ -126,6 +126,7 @@ form * {
 .line {
   flex: 1;
   display: flex;
+  justify-content: space-around;
 }
 
 .answer {

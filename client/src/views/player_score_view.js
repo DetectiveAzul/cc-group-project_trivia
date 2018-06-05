@@ -19,7 +19,7 @@ PlayerScoreView.prototype.addName = function () {
 PlayerScoreView.prototype.percentageScore = function () {
   const percentageScore = document.createElement('p');
   const percentage = this.calculatePercentage();
-  percentageScore.textContent = `Has answered ${percentage}% correctly`;
+  percentageScore.textContent = `Has answered ${Math.floor(percentage)}% correctly`;
   this.container.appendChild(percentageScore);
 };
 

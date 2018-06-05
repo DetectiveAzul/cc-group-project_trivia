@@ -19,9 +19,19 @@ EndScreenView.prototype.render = function (){
 EndScreenView.prototype.createHeader = function () {
   const header = document.createElement('h1');
   header.id = 'title';
-  header.textContent = `INSERT is the Winner!`;
+  header.textContent = this.getWinner();
   this.container.appendChild(header);
-  console.log('Hello World from createHeader');
+};
+
+EndScreenView.prototype.getWinner = function() {
+  console.log(this.players);
+  this.sortByAnswers();
+  console.log(this.players);
+  return `${this.players[0].name} is the Winner!`;
+}
+
+EndScreenView.prototype.sortByAnswers = function () {
+  return this.players.sort(function(a, b) { return b.correctQuestionsAnswered.length - a.correctQuestionsAnswered.length });
 };
 
 
