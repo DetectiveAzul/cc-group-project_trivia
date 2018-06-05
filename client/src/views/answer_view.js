@@ -1,16 +1,16 @@
 const PubSub = require('../helpers/pub_sub.js');
 
-const AnswerView = function(index, answerText, element) {
+const AnswerView = function(index, answerText, container) {
   this.index = index;
   this.answerText = answerText;
-  this.element = element;
+  this.container = container;
 }
 
 AnswerView.prototype.render = function () {
-  const answerElement = document.createElement('p');
-  answerElement.textContent = this.answerText;
-  this.element.appendChild(answerElement);
-  this.element.addEventListener('click', (event) => {
+  const answerContainer = document.createElement('p');
+  answerContainer.textContent = this.answerText;
+  this.container.appendChild(answerContainer);
+  this.container.addEventListener('click', (event) => {
     this.handleClick();
   });
 
@@ -18,7 +18,6 @@ AnswerView.prototype.render = function () {
 
 AnswerView.prototype.handleClick = function () {
    PubSub.publish('AnswerView:answer-selected', this.index);
-   console.log(this.answerText);
 };
 
 module.exports = AnswerView;

@@ -35,6 +35,7 @@ Game.prototype.renderGame = function() {
   };
 
   PubSub.publish('Game-ready', game );
+
 };
 
 

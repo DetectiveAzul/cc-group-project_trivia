@@ -19,7 +19,7 @@ QuestionMainContainerView.prototype.render = function () {
   this.container.appendChild(answersElement);
 
   const questionView = new QuestionView(this.question.questionText, questionElement);
-  const answersContainerView = new AnswersContainerView(this.answers, answersElement);
+  const answersContainerView = new AnswersContainerView(this.answers, this.question.correctAnswer, answersElement);
 
   questionView.render();
   answersContainerView.render();
