@@ -13,6 +13,7 @@ QuestionDataHandler.prototype.getData = function () {
   request.get()
     .then((questions) => {
       this.questionsArray = this.handleData(questions["results"]);
+      this.shuffleQuestionAnswers();
       PubSub.publish('QuestionData:Questions-ready', this.questionsArray);
     });
 };
@@ -25,6 +26,12 @@ QuestionDataHandler.prototype.handleData = function (questions) {
     questionsArray.push(newQuestion);
   });
   return questionsArray;
+};
+
+QuestionDataHandler.prototype.shuffleQuestionAnswers = function () {
+  this.questionsArray.forEach((question) => {
+    question.shuffleAnswers();
+  });
 };
 
 QuestionDataHandler.prototype.getUrl = function () {
