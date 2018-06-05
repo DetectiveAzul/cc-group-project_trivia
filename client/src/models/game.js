@@ -28,7 +28,7 @@ Game.prototype.bindEvents = function () {
     //   PubSub.publish('GameModel:end-of-round', this.questions[this.currentQuestion].correctAnswer);
     // };
 
-    console.log(`Player ${this.currentPlayer + 1} selects:`, evt.detail);
+    console.log(`${this.players[this.currentPlayer].name} selects:`, evt.detail);
     this.handleAnswerClick(evt.detail);
   });
 
@@ -101,6 +101,7 @@ Game.prototype.nextPlayer = function () {
 // Next Round Logic
 Game.prototype.nextRound = function () {
   this.displayCorrectAnswer();
+  this.shufflePlayers();
   document.querySelector('.correct-answer').style.background = 'green';
   setTimeout(() => {
     this.nextQuestion();
