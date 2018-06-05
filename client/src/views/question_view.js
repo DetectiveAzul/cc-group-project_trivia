@@ -6,7 +6,7 @@ const QuestionView = function(questionText, container) {
 }
 
 QuestionView.prototype.render = function () {
-  const questionElement = document.createElement('p');
+  const questionElement = document.createElement('h1');
   questionElement.textContent = this.questionText;
   this.container.appendChild(questionElement);
 };
