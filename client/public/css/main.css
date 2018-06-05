@@ -6,7 +6,13 @@ body {
   box-sizing: border-box;
 }
 
-p {
+.player-container p {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 20px;
+}
+
+.question-container p {
   text-align: center;
   vertical-align: middle;
   font-size: 20px;
