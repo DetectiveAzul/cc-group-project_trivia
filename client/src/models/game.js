@@ -19,7 +19,18 @@ Game.prototype.bindEvents = function () {
   PubSub.subscribe('QuestionData:Questions-ready', (evt) => {
     this.questions = evt.detail;
     console.log(this.questions);
-});
+    this.startGame();
+  });
+
+};
+
+Game.prototype.startGame = function() {
+  const game = {
+    players: this.players,
+    question: this.questions[this.currentQuestion]
+  };
+
+  PubSub.publish('Game-ready', game );
 };
 
 
