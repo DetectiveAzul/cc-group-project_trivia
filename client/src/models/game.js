@@ -3,12 +3,14 @@ const Question = require('./question');
 const PubSub = require('../helpers/pub_sub');
 const Request = require('../helpers/request');
 const shuffle = require('shuffle-array');
+const EndScreenView = require('../views/end_screen_view.js');
 
 const Game = function(players=[], questions=[]){
   this.players = players;
   this.questions = questions;
   this.currentQuestion = 0;
   this.currentPlayer = 0;
+  this.gameEnded = false;
 }
 
 Game.prototype.bindEvents = function () {
@@ -22,9 +24,9 @@ Game.prototype.bindEvents = function () {
     this.renderGame();
   });
   PubSub.subscribe('AnswerView:answer-selected', (evt) => {
-    if (this.isLastPlayer()) {
-      PubSub.publish('GameModel:end-of-round', this.questions[this.currentQuestion].correctAnswer);
-    };
+    // if (this.isLastPlayer()) {
+    //   PubSub.publish('GameModel:end-of-round', this.questions[this.currentQuestion].correctAnswer);
+    // };
 
     console.log(`Player ${this.currentPlayer + 1} selects:`, evt.detail);
     this.handleAnswerClick(evt.detail);
@@ -33,13 +35,13 @@ Game.prototype.bindEvents = function () {
 };
 
 Game.prototype.renderGame = function() {
-  const game = {
-    players: this.players,
-    question: this.questions[this.currentQuestion]
+  if (!this.gameEnded) {
+    const game = {
+      players: this.players,
+      question: this.questions[this.currentQuestion]
+    };
+    PubSub.publish('Game-ready', game );
   };
-
-  PubSub.publish('Game-ready', game );
-
 };
 
 
@@ -105,6 +107,7 @@ Game.prototype.nextQuestion = function () {
   if(this.currentQuestion < this.questions.length-1){
     this.currentQuestion++;
   }else{
+    this.gameEnded = true;
     this.endGame();
   };
 };
@@ -114,7 +117,10 @@ Game.prototype.isLastPlayer = function() {
 }
 
 Game.prototype.endGame = function () {
-  console.log('Game Ended!');
+  const body = document.querySelector('body');
+  body.innerHTML = '';
+  const endScreenView = new EndScreenView(this.players, body);
+  endScreenView.render();
 };
 
 module.exports = Game;
