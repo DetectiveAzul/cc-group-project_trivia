@@ -57,7 +57,7 @@ PlayerScoreView.prototype.createChart = function () {
        type     : 'bar'
      },
      title: {
-            text: 'percentage score'
+            text: `${this.player.name} score`
         },
         xAxis: {
             categories: ['Correct', 'Incorrect']
