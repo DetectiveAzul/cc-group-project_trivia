@@ -31,8 +31,7 @@ GameView.prototype.createOwnElement = function() {
   body.innerHTML = '';
 
   //Add the header div
-  //TODO:
-  // this.renderTimer(body);
+  this.renderTimer(body);
 
   //Create own div and append it
   this.container = document.createElement('div');
@@ -41,14 +40,13 @@ GameView.prototype.createOwnElement = function() {
 
 };
 
-//TODO:
-// GameView.prototype.renderTimer = function (parent) {
-//   const newContainer = document.createElement('div');
-//   newContainer.classList.add('header');
-//   parent.appendChild(newContainer);
-//   const timerView = new TimerView(newContainer);
-//   timerView.bindEvents();
-// };
+GameView.prototype.renderTimer = function (parent) {
+  const newContainer = document.createElement('div');
+  newContainer.classList.add('header');
+  parent.appendChild(newContainer);
+  const timerView = new TimerView(newContainer);
+  timerView.bindEvents();
+};
 
 GameView.prototype.renderQuestion = function () {
   const questionContainer = document.createElement('div');

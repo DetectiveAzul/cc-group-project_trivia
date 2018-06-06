@@ -1,4 +1,4 @@
-# Compendium
+# Pug Quiz
 
 PubQuiz is a JavaScript Trivia Game made with Express and MongoDB. Following Event Driven Development and MVC, and a RESTfull Server for storing highscores (in development), takes question from an external API (OpenTDB) and creates a game depending on number of player, difficulty, category and number of questions. Some of the categories does not have questions, so it will create an empty game.
 

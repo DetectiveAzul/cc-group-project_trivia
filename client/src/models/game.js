@@ -12,6 +12,7 @@ const Game = function(players=[], questions=[]){
   this.currentQuestion = 0;
   this.currentPlayer = 0;
   this.gameEnded = false;
+  this.timer = null;
 }
 
 Game.prototype.bindEvents = function () {
@@ -23,8 +24,10 @@ Game.prototype.bindEvents = function () {
     this.renderGame();
   });
   PubSub.subscribe('AnswerView:answer-selected', (evt) => {
-    console.log(`${this.players[this.currentPlayer].name} selects:`, evt.detail);
     this.handleAnswerClick(evt.detail);
+  });
+  PubSub.subscribe('TimerModel:time-finished', (evt) => {
+    this.forcedAnswer();
   });
 
 };
@@ -37,6 +40,7 @@ Game.prototype.renderGame = function() {
       currentPlayer: this.currentPlayer
     };
     PubSub.publish('Game-ready', game );
+    this.newTimer(20 - (this.currentPlayer * 5));
   };
 };
 
@@ -44,6 +48,7 @@ Game.prototype.renderGame = function() {
 // Conections with the views
 
 Game.prototype.handleAnswerClick = function (answerIndex) {
+  this.timer.stopTimer();
   this.playerAnswer(answerIndex);
   this.nextPlayer();
 };
@@ -131,6 +136,17 @@ Game.prototype.endGame = function () {
   body.innerHTML = '';
   const endScreenView = new EndScreenView(this.players, body);
   endScreenView.render();
+};
+
+//Game controlling Timer
+Game.prototype.newTimer = function (duration) {
+  this.timer = new Timer(duration);
+  this.timer.startTimer();
+};
+
+Game.prototype.forcedAnswer = function() {
+  this.players[this.currentPlayer].incorrectAnswer(this.questions[this.currentQuestion]);
+  this.nextPlayer();
 };
 
 module.exports = Game;
