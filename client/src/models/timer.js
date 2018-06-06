@@ -18,7 +18,7 @@ Timer.prototype.timerTick = function () {
   this.timer = setTimeout(() => {
     this.currentTime --;
     if (this.stopTick()) {
-      console.log('TIME STOP!');
+      PubSub.publish('TimerMode:time-runs', this.currentTime);
       PubSub.publish('TimerModel:time-finished', 'Time Stop')
     } else {
       this.timerTick();
