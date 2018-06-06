@@ -21,7 +21,7 @@ PubQuiz is a JavaScript Trivia Game made with Express and MongoDB. Following Eve
 ![character view](https://github.com/DetectiveAzul/cc-group-project_trivia/blob/master/images/intro.png?raw=true)
 
 
-![character view](https://github.com/DetectiveAzul/cc-group-project_trivia/blob/master/images/game.png?raw=true)
+![character view](https://github.com/DetectiveAzul/cc-group-project_trivia/blob/master/images/last_design.png?raw=true)
 
 # Pub Quiz
 A chain of pubs is looking to improve its system of quizzes to adapt themselves to modern times. They have decided to create an interactive webApp to display questions, answers and stats of the team in real time. Your task is to make an MVP so they can play the quiz with diferent number of players and being able to configure number of questions, categories and difficulty. They want questions to be random and numerous, so you might use an API to bring in content to the app.
