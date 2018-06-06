@@ -34,7 +34,7 @@ FormView.prototype.createContainer = function () {
 FormView.prototype.createTitle = function () {
   const heading = document.createElement('h1');
   heading.id = 'title';
-  heading.textContent = 'Pug Quiz';
+  heading.textContent = 'Pub Quiz';
   this.container.appendChild(heading);
 };
 
