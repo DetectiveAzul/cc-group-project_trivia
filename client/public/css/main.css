@@ -104,7 +104,7 @@ form * {
 }
 
 .player-turn {
-  box-shadow: 0px 8px 16px 0px rgba(240,230,140,0.8);
+  box-shadow: 6px 6px 6px 6px rgba(240,230,140,0.8);
 }
 
 .question-container {
