@@ -21,6 +21,7 @@ Game.prototype.bindEvents = function () {
   });
   PubSub.subscribe('QuestionData:Questions-ready', (evt) => {
     this.questions = evt.detail;
+    alert('Careful! Every turn is timed. Get ready before going further!');
     this.renderGame();
   });
   PubSub.subscribe('AnswerView:answer-selected', (evt) => {
