@@ -37,20 +37,10 @@ PlayerScoreView.prototype.chartElement = function () {
   const newName = document.createElement('p');
   newName.textContent = this.player.name;
   this.container.appendChild(newName);
-
-  const chartElement = document.createElement('script');
-  chartElement.innerHTML = this.createChart();
-  this.container.appendChild(chartElement);
-
+  this.createChart();
 };
 
-
-PlayerScoreView.prototype.runOnLoad = function (c,o,d,e) {function x(){for(e=1;c.length;)c.shift()()}o[d]?(document[d]('DOMContentLoaded',x,0),o[d]('load',x,0)):o.attachEvent('onload',x);return function(t){e?o.setTimeout(t,0):c.push(t)}
-}
-([],window,'addEventListener');
-
 PlayerScoreView.prototype.createChart = function () {
-  return this.runOnLoad( () => {
     new Highcharts.Chart({
      chart : {
        renderTo : `container-${this.player.name}`,
@@ -72,7 +62,6 @@ PlayerScoreView.prototype.createChart = function () {
             data: [this.player.correctQuestionsAnswered.length, (this.player.questionsAnswered.length - this.player.correctQuestionsAnswered.length)]
         }]
    });
-  });
 };
 
 
