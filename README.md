@@ -1,6 +1,19 @@
 # Pub Quiz
 
-PubQuiz is a JavaScript Trivia Game made with Express and MongoDB. Following Event Driven Development and MVC, and a RESTfull Server for storing highscores (in development), takes question from an external API (OpenTDB) and creates a game depending on number of player, difficulty, category and number of questions. Some of the categories does not have questions, so it will create an empty game.
+PubQuiz is a JavaScript Trivia Game made with Express and MongoDB made by a team of four in one week as a part of Codeclan 16 week Software Developer course. It was developed following Event Driven Development and MVC, and a RESTfull Server for storing highscores (in development). Takes question from an external API (OpenTDB) and creates a game depending on number of player, difficulty, category and number of questions.
+
+#Tech Used
+
+* JavaScript, HTML and CSS (with Flexbox)
+* NPM for package install
+* Express for the server
+* Mocha for testing the logic
+* Webpack for bundling javascript files
+* MongoDB database
+
+#Live Demo
+
+You can find a live demo of this webApp on the following address: http://jajapubquiz.herokuapp.com
 
 ## Install
 * Install npm: `$ brew install npm`
