@@ -130,7 +130,9 @@ FormView.prototype.handleSubmit = function (form) {
    let category = '';
    if(form.category.value != 0) category = `&category=${form.category.value}`
    let difficulty = '';
-   if(form.difficulty.value !== 'any') difficulty = `&category=${form.difficulty.value}`;
+   if(form.difficulty.value !== 'any') {
+     difficulty = `&difficulty=${form.difficulty.value}`
+   };
 
    let url = `https://opentdb.com/api.php?amount=${amount}${category}${difficulty}&type=multiple`;
    PubSub.publish('FormView:url-ready', url);
