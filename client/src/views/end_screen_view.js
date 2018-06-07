@@ -27,9 +27,7 @@ EndScreenView.prototype.createHeader = function () {
 };
 
 EndScreenView.prototype.getWinner = function() {
-  console.log(this.players);
   this.sortByAnswers();
-  console.log(this.players);
   return `${this.players[0].name} is the Winner!`;
 }
 
