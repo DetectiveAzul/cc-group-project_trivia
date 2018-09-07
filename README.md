@@ -13,7 +13,7 @@ PubQuiz is a JavaScript Trivia Game made with Express and MongoDB made by a team
 
 # Live Demo
 
-A live demo compatible with Google Chrome is available at https://jajapubquiz.herokuapp.com/
+A live demo compatible with Google Chrome is available at http://pubquiz.devazul.co.uk/
 
 ## Install
 * Install npm: `$ brew install npm`
